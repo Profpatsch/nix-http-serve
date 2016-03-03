@@ -1,4 +1,4 @@
-# nix-serve
+# nix-http-serve
 
 Very rough script to serve the result of a nix expression as http files.
 The nice thing is that it re-runs the nix-expression on each reload (> `cachingSeconds`),
@@ -17,7 +17,7 @@ env port=8085 \
     nixfile=\<nixpkgs/doc\> \
     root=/share/doc/nixpkgs/ \
     varfolder=./test \
-      ./nix-serve
+      ./nix-http-serve
 ```
 
 If you have a recent `nix-shell` installed, the file is a standalone script
