@@ -1,5 +1,3 @@
-#!/usr/bin/env nix-shell
-#!nix-shell -i runhaskell -p 'pkgs.haskellPackages.ghcWithPackages (hp: with hp; [ MissingH extra wai wai-app-static warp ])' '<nixpkgs>'
 {-# LANGUAGE OverloadedStrings #-}
 module Main where
 
