@@ -1,4 +1,4 @@
-with import <nixpkgs> {};
+{ stdenv, haskellPackages, pandoc, gzip }:
 
 let
   deps = haskellPackages.ghcWithPackages (h: with h;

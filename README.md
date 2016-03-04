@@ -22,7 +22,11 @@ env port=8085 \
       ./nix-http-serve
 ```
 
-If you have a recent `nix-shell` installed, the file is a standalone script
-that will download its dependencies automatically.
+```bash
+# to build
+nix-build -E 'with import <nixpkgs> {}; pkgs.callPackage ./default.nix {}
+# to install into local env
+nix-env -i $( <previous command> )
+```
 
 Have fun!
