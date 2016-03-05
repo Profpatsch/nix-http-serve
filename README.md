@@ -24,7 +24,7 @@ env port=8085 \
 
 ```bash
 # to build
-nix-build -E 'with import <nixpkgs> {}; pkgs.callPackage ./default.nix {}
+nix-build -E 'with import <nixpkgs> {}; (pkgs.callPackage ./default.nix {}).nix-http-serve'
 # to install into local env
 nix-env -i $( <previous command> )
 ```
