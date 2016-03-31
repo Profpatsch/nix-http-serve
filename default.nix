@@ -2,7 +2,7 @@
 rec {
   name = "nix-http-serve";
   deps = haskellPackages.ghcWithPackages (h: with h;
-    [ MissingH extra wai wai-app-static warp ]);
+    [ MissingH extra wai wai-app-static warp unix ]);
 
   buildInputs = [ deps pandoc gzip ];
   buildPhase = ''

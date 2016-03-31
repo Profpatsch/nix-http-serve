@@ -11,8 +11,11 @@ and since that is O(1) if the nix expression didn’t change it’s very conveni
 * `varfolder`: the folder which will receive the updated results
 * `root`: the path *inside* the result that should be served as root (use a folder, not a file, otherwise the fileserver won’t know the mimetype)
 * `nixfile`: the file (or folder) that `nix-build` should evaluate
+* `attribute` (optional): the attribute that produces the output
 
-Example invocation to show the most recent nixpkgs docs:
+## Run
+
+Most recent nixpkgs docs:
 
 ```bash
 env port=8085 \
@@ -22,11 +25,30 @@ env port=8085 \
       ./nix-http-serve
 ```
 
+For the nixos (x86) documentation:
+```bash
+env port=8085 \
+    nixfile=\<nixpkgs/nixos/release.nix\> \
+    root=/share/doc/nixos/ \
+    varfolder=./test \
+    attribute="manual.x86_64-linux" \
+      ./nix-http-serve
+```
+
+## Build
+
 ```bash
 # to build
-nix-build -E 'with import <nixpkgs> {}; (pkgs.callPackage ./default.nix {}).nix-http-serve'
+nix-build -p '(callPackage ./. {}).nix-http-serve'
 # to install into local env
 nix-env -i $( <previous command> )
 ```
+
+## Hack
+
+```bash
+nix-shell -E "with import <nixpkgs> {}; (callPackage ./. {}).nix-http-serve"
+```
+
 
 Have fun!
